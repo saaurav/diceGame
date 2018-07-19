@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <p id="demo"></p>
+
+<script>
+"use strict";
+
+function Dice() {
+  //1-6
+  this.faceValue = [];
+  this.isActive = false;
+  // console.log(noOfPlayers);
+  for(var i=0;i<6;i++){
+    this.faceValue.push(i+1);
+  }
+}
+
+function Players(numOfPlayers)
+ {
+    this.name = [];
+    var playerRolled;
+    this.playerRolledList = [];
+
+   for(var i=0;i<numOfPlayers;i++)
+   {
+     this.name[i] = ["Player"+(i+1)];
+     playerRolled = roll_dice();
+     // this.playerRolled = Math.floor(Math.random() * ((6 - 1) + 1) + 1);
+     this.name[i].push(playerRolled);
+     this.playerRolledList.push(playerRolled);
+     // this.playerRolled = Math.floor(Math.random() * ((6 - 1) + 1) + 1);
+     // console.log(this.playerRolled);
+     // this.playerRolledList.push(this.playerRolled);
+     // this.playerRolled = roll_dice();
+   }
+   var largest = Math.max.apply(Math, this.playerRolledList);
+   // var len = this.playerRolledList.length
+   // var max = -Infinity;
+   // while (len--) {
+   //     if (this.playerRolledList[len] > max) {
+   //         max = this.playerRolledList[len];
+   //     }
+   // }
+   console.log(largest);
+   for(var j=0;j<numOfPlayers;j++)
+   {
+     if(this.playerRolledList[j] == largest)
+     {
+       document.getElementById("demo").innerHTML = "Winner is: "+ this.name[j];
+     }
+
+   }
+   // max();
+   // console.log(this.name);
+   function roll_dice(){
+     return Math.floor(Math.random() * ((6 - 1) + 1) + 1);
+   }
+
+   // function max()
+   // {
+   //     var m = -Infinity, i = 0, n = this.playerRolledList.length;
+   //
+   //     for (; i != n; ++i) {
+   //         if (a[i] > m) {
+   //             m = a[i];
+   //         }
+   //     }
+   //
+   //     return m;
+   // }
+
+}
+
+function init_game(){
+
+  var dice = new Dice();
+//  var numOfPlayers = prompt("Enter number of Players:");
+  var player = new Players(5);
+
+  // var max = m;
+  // console.log(max);
+  //player.roll_dice();
+ console.log(dice);
+  console.log(player);
+
+
+
+ //  for(var i=0;i<4;i++)
+ //  {
+ //    for(var j=0;j<3;j++)
+ //    {
+ //      var decks = new Deck();
+ //      var index = 0;
+ //       player.name[i] = decks.cards.splice(index,1);
+ //       index++;
+ //       console.log(index);
+ //    }
+ // }
+ // console.log(player.name);
+}
+
+// function randomNo(){
+//   return Math.floor(Math.random() * ((6 - 1) + 1) + 1);
+// }
+
+init_game();
+// var array = [["players1"],["player2"],["player3"]];
+// console.log(array);
+// for(var i=0;i<array.length;i++){
+//     console.log(array[i]);
+//     array[i].push(randomNo());
+// }
+//
+// console.log(array)
+</script>
+
+
+</body>
+</html>
